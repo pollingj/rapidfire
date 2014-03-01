@@ -1,3 +1,4 @@
+require 'acts_as_list'
 module Rapidfire
   class Question < ActiveRecord::Base
     belongs_to :question_group, :inverse_of => :questions
@@ -7,6 +8,8 @@ module Rapidfire
 
     validates :question_group, :question_text, :presence => true
     serialize :validation_rules
+    
+    acts_as_list scope: :question_group
     
 
     if Rails::VERSION::MAJOR == 3
