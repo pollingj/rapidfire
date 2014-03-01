@@ -1,5 +1,6 @@
 module Rapidfire
   class Question < ActiveRecord::Base
+    acts_as_orderable
     belongs_to :question_group, :inverse_of => :questions
     has_many   :answers
 
