@@ -1,6 +1,5 @@
 module Rapidfire
   class Question < ActiveRecord::Base
-    acts_as_orderable
     belongs_to :question_group, :inverse_of => :questions
     has_many   :answers
 
@@ -8,6 +7,7 @@ module Rapidfire
 
     validates :question_group, :question_text, :presence => true
     serialize :validation_rules
+    
 
     if Rails::VERSION::MAJOR == 3
       attr_accessible :question_group, :question_text, :validation_rules, :answer_options
