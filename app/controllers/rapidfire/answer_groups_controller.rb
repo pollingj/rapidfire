@@ -7,6 +7,8 @@ module Rapidfire
     end
 
     def create
+      puts answer_group_params
+      puts "//////////////"
       @answer_group_builder = AnswerGroupBuilder.new(answer_group_params)
 
       if @answer_group_builder.save
