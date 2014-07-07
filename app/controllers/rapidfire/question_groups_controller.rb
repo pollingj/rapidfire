@@ -35,6 +35,16 @@ module Rapidfire
 
       respond_with(@question_group_results, root: false)
     end
+    
+    def crosstab
+      @question_group = QuestionGroup.find(params[:id])
+      
+      respond_with(@question_group, root: false)
+    end
+    
+    def crosstab
+      @question_group = QuestionGroup.find(params[:id])
+    end
 
     private
     def question_group_params

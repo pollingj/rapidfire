@@ -1,6 +1,8 @@
 Rapidfire::Engine.routes.draw do
   resources :question_groups do
     get 'results', on: :member
+    get 'crosstab', on: :member
+    post 'crosstab_create', on: :member
 
     resources :questions
     resources :answer_groups, only: [:new, :create]
