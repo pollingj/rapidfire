@@ -15,8 +15,14 @@ module Rapidfire
           case question
           when Rapidfire::Questions::Select, Rapidfire::Questions::Radio,
             Rapidfire::Questions::Checkbox
-            answers = get_answer_groups_answers(answer_groups, question).map { |text| text.split(',') }.flatten
-            answers.inject(Hash.new(0)) { |total, e| total[e] += 1; total }
+            answer_groups_answers = get_answer_groups_answers(answer_groups, question)
+            all_answers = []
+            answer_groups_answers.each do |text|
+                all_answers << text.split(',') unless text.nil?
+            end
+            answers = all_answers.flatten
+
+            answers.inject(Hash.new(0)) { |total, e| total[e] += 1; total } unless answers.nil?
 
           when Rapidfire::Questions::Short, Rapidfire::Questions::Date,
             Rapidfire::Questions::Long, Rapidfire::Questions::Numeric
