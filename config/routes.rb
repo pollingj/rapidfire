@@ -4,7 +4,9 @@ Rapidfire::Engine.routes.draw do
     get 'crosstab', on: :member
     post 'crosstab_create', on: :member
 
-    resources :questions
+    resources :questions do
+      post :sort, on: :collection
+    end
     resources :answer_groups, only: [:new, :create]
   end
 
