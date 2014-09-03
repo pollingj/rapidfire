@@ -11,6 +11,14 @@ module Rapidfire
       respond_with(@questions)
     end
 
+    def sort
+      item = Question.find(params[:id])
+      item.position = params[:thing][:position]
+      item.save
+
+      render nothing: true
+    end
+
     def new
       @question = QuestionForm.new(:question_group => @question_group)
       respond_with(@question)
