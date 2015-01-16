@@ -11,11 +11,10 @@ module Rapidfire
       attr_accessible :question_group, :user
     end
     
-    def self.to_csv(answer_groups)
+    def self.to_csv(answer_groups, options = {})
       last_answer_set = answer_groups.last.answers
       
-      puts "in here!"
-      CSV.generate do |csv|
+      CSV.generate(options) do |csv|
         csv << last_answer_set.map { |a| a.question.question_text }
         answer_groups.each do |group|
           csv << group.answers.map { |a| a.answer_text }
