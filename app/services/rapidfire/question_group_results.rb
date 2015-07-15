@@ -18,7 +18,9 @@ module Rapidfire
             answer_groups_answers = get_answer_groups_answers(answer_groups, question)
             all_answers = []
             answer_groups_answers.each do |text|
-                all_answers << text.split(',') unless text.nil?
+              next if text.nil?
+              t = text.to_string
+              all_answers << t.split(',')
             end
             answers = all_answers.flatten
 
