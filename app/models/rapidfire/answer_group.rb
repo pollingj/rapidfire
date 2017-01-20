@@ -15,9 +15,9 @@ module Rapidfire
       last_answer_set = answer_groups.last.answers
       
       CSV.generate(options) do |csv|
-        csv << last_answer_set.map { |a| a.question.question_text }
+        csv << last_answer_set.reverse.map { |a| a.question.question_text }
         answer_groups.each do |group|
-          csv << group.answers.map { |a| a.answer_text }
+          csv << group.answers.reverse.map { |a| a.answer_text }
         #  group.answers.each do |answer|
         #    csv << [answer.question.question_text, answer.answer_text]#answer.attributes.values_at(*first_answer.column_names)
         #  end
